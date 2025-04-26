@@ -19,7 +19,7 @@ It allows you to **create tasks** with attributes like title, description, statu
 1. Clone the repository or create the project manually:
 
     ```bash
-    git clone <repository-url>
+    git clone git@github.com:Mostapha94/task-manger.git
     cd task-manager-api
     ```
 
