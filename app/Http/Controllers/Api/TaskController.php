@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskStoreRequest;
 use App\Services\TaskService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
+
 
 /**
  * Task Controller
@@ -14,6 +16,8 @@ use Illuminate\Http\JsonResponse;
  */
 class TaskController extends Controller
 {
+    use ApiResponse;
+
     protected $taskService;
 
     /**
@@ -35,10 +39,6 @@ class TaskController extends Controller
     public function store(TaskStoreRequest $request): JsonResponse
     {
         $task = $this->taskService->createTask($request->validated());
-
-        return response()->json([
-            'message' => 'Task created successfully.',
-            'data' => $task
-        ], 201);
+        return $this->success($task, 'Task created successfully.', 201);
     }
 }
